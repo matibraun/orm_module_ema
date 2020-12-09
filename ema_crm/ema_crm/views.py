@@ -29,4 +29,3 @@ class Message(APIView):
         return Response(data=request.data, status=status.HTTP_200_OK)
 
 
-class Paciente()
