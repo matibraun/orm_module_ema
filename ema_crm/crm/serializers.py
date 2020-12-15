@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from crm.models import PacienteModel, AreaModel, UsuarioModel, ProvinciaModel, DomicilioModel, TratamientoModel, DiagnosticoModel, FormaClinicaModel, SintomaModel, TerapiaRehabilitacionModel, TallerModel, ReunionModel, SituacionHabitacionalModel, SituacionLaboralModel, CoberturaMedicaModel
+from crm.models import PacienteModel, AreaModel, UsuarioModel, ProvinciaModel, DomicilioModel, TratamientoModel, DiagnosticoModel, FormaClinicaModel, SintomaModel, TerapiaRehabilitacionModel, TallerModel, ReunionModel, SituacionHabitacionalModel, SituacionLaboralModel, CoberturaMedicaModel, ComposicionFamiliarModel
 
 # , TallerPacienteModel, DerivacionModel
 
@@ -88,3 +88,7 @@ class CoberturaMedicaSerializer(ModelSerializer):
 #         model = TallerPacienteModel
 #         fields = '__all__'
 
+class ComposicionFamiliarSerializer(ModelSerializer):
+    class Meta:
+        model = ComposicionFamiliarModel
+        fields = '__all__'

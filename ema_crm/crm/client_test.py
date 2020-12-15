@@ -71,28 +71,28 @@ BASE = "http://127.0.0.1:8000/"
 # response = requests.delete(BASE + "crm/tratamientos/")
 # print(response.json())
 
-# response = requests.post(BASE + "crm/tratamientos/", {"fecha": "1-1-2020", "medicoTratante": "pepe", "tratamiento": "tratamiento 1", "droga": "droga a", "marca": "pfizer", "paciente": 1})
+# response = requests.post(BASE + "crm/tratamientos/", {"fecha": "1-1-2020", "medicoTratante": "pepe", "tratamiento": "tratamiento 1", "droga": "droga a", "marca": "pfizer", "paciente": 5})
 # print(response.json())
-# response = requests.post(BASE + "crm/tratamientos/", {"fecha": "1-2-2020", "medicoTratante": "jose", "tratamiento": "tratamiento 2", "droga": "droga b", "marca": "bago", "paciente": 2})
+# response = requests.post(BASE + "crm/tratamientos/", {"fecha": "1-2-2020", "medicoTratante": "jose", "tratamiento": "tratamiento 2", "droga": "droga b", "marca": "bago", "paciente": 8})
 # print(response.json())
-# response = requests.post(BASE + "crm/tratamientos/", {"fecha": "3-1-2020", "medicoTratante": "juan", "tratamiento": "tratamiento 3", "droga": "droga c", "marca": "sputnik", "paciente": 3})
+# response = requests.post(BASE + "crm/tratamientos/", {"fecha": "3-1-2020", "medicoTratante": "juan", "tratamiento": "tratamiento 3", "droga": "droga c", "marca": "sputnik", "paciente": 7})
 # print(response.json())
-# response = requests.post(BASE + "crm/tratamientos/", {"fecha": "4-1-2020", "medicoTratante": "josele", "tratamiento": "tratamiento 4", "droga": "droga d", "marca": "roche", "paciente": 4})
+# response = requests.post(BASE + "crm/tratamientos/", {"fecha": "4-1-2020", "medicoTratante": "josele", "tratamiento": "tratamiento 4", "droga": "droga d", "marca": "roche", "paciente": 8})
 # print(response.json())
 
 # response = requests.get(BASE + "crm/tratamientos/")
 # print(response.json())
 
-# response = requests.get(BASE + "crm/tratamientos/2")
+# response = requests.get(BASE + "crm/tratamientos/6")
 # print(response.json())
 
-# response = requests.delete(BASE + "crm/tratamientos/2")
+# response = requests.delete(BASE + "crm/tratamientos/6")
 # print(response.json())
 
-# response = requests.get(BASE + "crm/tratamientos/3")
+# response = requests.get(BASE + "crm/tratamientos/7")
 # print(response.json())
 
-# response = requests.put(BASE + "crm/tratamientos/3", {"nombre": "sutebah"})
+# response = requests.put(BASE + "crm/tratamientos/7", {"tratamiento": "asdas"})
 # print(response.json())
 
 
@@ -130,37 +130,6 @@ BASE = "http://127.0.0.1:8000/"
 
 #############################################################################################
 
-# Tratamientos NO ANDA FK A PACIENTE
-
-# response = requests.delete(BASE + "crm/tratamientos/")
-# print(response.json())
-
-# response = requests.post(BASE + "crm/tratamientos/", {"medicoTratante": "pepe", "tratamiento": "tratamiento 1", "droga": "droga a", "marca": "pfizer", "paciente": 1})
-# print(response.json())
-# response = requests.post(BASE + "crm/tratamientos/", {"medicoTratante": "jose", "tratamiento": "tratamiento 2", "droga": "droga b", "marca": "bago", "paciente": 2})
-# print(response.json())
-# response = requests.post(BASE + "crm/tratamientos/", {"medicoTratante": "juan", "tratamiento": "tratamiento 3", "droga": "droga c", "marca": "sputnik", "paciente": 3})
-# print(response.json())
-# response = requests.post(BASE + "crm/tratamientos/", {"medicoTratante": "josele", "tratamiento": "tratamiento 4", "droga": "droga d", "marca": "roche", "paciente": 4})
-# print(response.json())
-
-# response = requests.get(BASE + "crm/tratamientos/")
-# print(response.json())
-
-# response = requests.get(BASE + "crm/tratamientos/2")
-# print(response.json())
-
-# response = requests.delete(BASE + "crm/tratamientos/2")
-# print(response.json())
-
-# response = requests.get(BASE + "crm/tratamientos/3")
-# print(response.json())
-
-# response = requests.put(BASE + "crm/tratamientos/3", {"nombre": "sutebah"})
-# print(response.json())
-
-
-#############################################################################################
 
 # TerapiaRehabilitacion OK
 
@@ -333,31 +302,222 @@ BASE = "http://127.0.0.1:8000/"
 
 # Reuniones
 
-response = requests.delete(BASE + "crm/reuniones/")
-print(response.json())
+# response = requests.delete(BASE + "crm/reuniones/")
+# print(response.json())
 
-response = requests.post(BASE + "crm/reuniones/", {"contenido": "el paciente tiene diarrea", "paciente": 7, "usuario": 5, "areaAlQueSeDerivo":12})
-print(response.json())
-response = requests.post(BASE + "crm/reuniones/", {"contenido": "el paciente se dio de alta", "paciente": 8, "usuario": 6, "areaAlQueSeDerivo":13})
-print(response.json())
-response = requests.post(BASE + "crm/reuniones/", {"contenido": "el paciente tiene vomitos", "paciente": 8, "usuario": 6})
-print(response.json())
-response = requests.post(BASE + "crm/reuniones/", {"contenido": "el paciente esta ciego", "paciente": 5, "usuario": 5, "areaAlQueSeDerivo":13})
-print(response.json())
+# response = requests.post(BASE + "crm/reuniones/", {"contenido": "el paciente tiene diarrea", "paciente": 7, "usuario": 5, "areaAlQueSeDerivo":12})
+# print(response.json())
+# response = requests.post(BASE + "crm/reuniones/", {"contenido": "el paciente se dio de alta", "paciente": 8, "usuario": 6, "areaAlQueSeDerivo":13})
+# print(response.json())
+# response = requests.post(BASE + "crm/reuniones/", {"contenido": "el paciente tiene vomitos", "paciente": 8, "usuario": 6})
+# print(response.json())
+# response = requests.post(BASE + "crm/reuniones/", {"contenido": "el paciente esta ciego", "paciente": 5, "usuario": 5, "areaAlQueSeDerivo":13})
+# print(response.json())
 
 # response = requests.get(BASE + "crm/reuniones/")
 # print(response.json())
 
-# response = requests.get(BASE + "crm/reuniones/2")
+# response = requests.get(BASE + "crm/reuniones/5")
 # print(response.json())
 
-# response = requests.delete(BASE + "crm/reuniones/2")
+# response = requests.delete(BASE + "crm/reuniones/5")
 # print(response.json())
 
-# response = requests.get(BASE + "crm/reuniones/3")
+# response = requests.get(BASE + "crm/reuniones/6")
 # print(response.json())
 
-# response = requests.put(BASE + "crm/reuniones/3", {"nombre": "equitacion"})
+# response = requests.put(BASE + "crm/reuniones/6", {"contenido": "blablabla"})
+# print(response.json())
+
+
+#############################################################################################
+
+# Diagnosticos
+
+# response = requests.delete(BASE + "crm/diagnosticos/")
+# print(response.json())
+
+# response = requests.post(BASE + "crm/diagnosticos/", {"nombre": "esclerosis multiple"})
+# print(response.json())
+# response = requests.post(BASE + "crm/diagnosticos/", {"nombre": "NMO"})
+# print(response.json())
+
+# response = requests.get(BASE + "crm/diagnosticos/")
+# print(response.json())
+
+# response = requests.get(BASE + "crm/diagnosticos/2")
+# print(response.json())
+
+# response = requests.delete(BASE + "crm/diagnosticos/2")
+# print(response.json())
+
+# response = requests.get(BASE + "crm/diagnosticos/1")
+# print(response.json())
+
+# response = requests.put(BASE + "crm/diagnosticos/1", {"nombre": "asda"})
+# print(response.json())
+
+
+#############################################################################################
+
+# FormasClinicas
+
+# response = requests.delete(BASE + "crm/formas_clinicas/")
+# print(response.json())
+
+# response = requests.post(BASE + "crm/formas_clinicas/", {"nombre": "brotes y remisiones"})
+# print(response.json())
+# response = requests.post(BASE + "crm/formas_clinicas/", {"nombre": "primaria progresiva"})
+# print(response.json())
+# response = requests.post(BASE + "crm/formas_clinicas/", {"nombre": "secundaria progresiva"})
+# print(response.json())
+# response = requests.post(BASE + "crm/formas_clinicas/", {"nombre": "sindrome desmielinizante"})
+# print(response.json())
+
+
+
+# response = requests.get(BASE + "crm/formas_clinicas/")
+# print(response.json())
+
+# response = requests.get(BASE + "crm/formas_clinicas/2")
+# print(response.json())
+
+# response = requests.delete(BASE + "crm/formas_clinicas/2")
+# print(response.json())
+
+# response = requests.get(BASE + "crm/formas_clinicas/1")
+# print(response.json())
+
+# response = requests.put(BASE + "crm/formas_clinicas/1", {"nombre": "asda"})
+# print(response.json())
+
+
+#############################################################################################
+
+
+# Sintomas
+
+# response = requests.delete(BASE + "crm/sintomas/")
+# print(response.json())
+
+# response = requests.post(BASE + "crm/sintomas/", {"nombre": "tos"})
+# print(response.json())
+# response = requests.post(BASE + "crm/sintomas/", {"nombre": "fiebre"})
+# print(response.json())
+# response = requests.post(BASE + "crm/sintomas/", {"nombre": "vomitos"})
+# print(response.json())
+# response = requests.post(BASE + "crm/sintomas/", {"nombre": "otros"})
+# print(response.json())
+
+
+
+# response = requests.get(BASE + "crm/sintomas/")
+# print(response.json())
+
+# response = requests.get(BASE + "crm/sintomas/2")
+# print(response.json())
+
+# response = requests.delete(BASE + "crm/sintomas/2")
+# print(response.json())
+
+# response = requests.get(BASE + "crm/sintomas/1")
+# print(response.json())
+
+# response = requests.put(BASE + "crm/sintomas/1", {"nombre": "asda"})
+# print(response.json())
+
+
+#############################################################################################
+
+
+# Situacion Habitacional
+
+# response = requests.delete(BASE + "crm/situaciones_habitacionales/")
+# print(response.json())
+
+# response = requests.post(BASE + "crm/situaciones_habitacionales/", {"nombre": "solo"})
+# print(response.json())
+# response = requests.post(BASE + "crm/situaciones_habitacionales/", {"nombre": "pareja"})
+# print(response.json())
+# response = requests.post(BASE + "crm/situaciones_habitacionales/", {"nombre": "familia"})
+# print(response.json())
+
+# response = requests.get(BASE + "crm/situaciones_habitacionales/")
+# print(response.json())
+
+# response = requests.get(BASE + "crm/situaciones_habitacionales/2")
+# print(response.json())
+
+# response = requests.delete(BASE + "crm/situaciones_habitacionales/2")
+# print(response.json())
+
+# response = requests.get(BASE + "crm/situaciones_habitacionales/1")
+# print(response.json())
+
+# response = requests.put(BASE + "crm/situaciones_habitacionales/1", {"nombre": "asdasd"})
+# print(response.json())
+
+
+#############################################################################################
+
+# Situacion Laboral
+
+# response = requests.delete(BASE + "crm/situaciones_laborales/")
+# print(response.json())
+
+# response = requests.post(BASE + "crm/situaciones_laborales/", {"nombre": "en relacion de dependencia"})
+# print(response.json())
+# response = requests.post(BASE + "crm/situaciones_laborales/", {"nombre": "independiente"})
+# print(response.json())
+# response = requests.post(BASE + "crm/situaciones_laborales/", {"nombre": "autonomo"})
+# print(response.json())
+# response = requests.post(BASE + "crm/situaciones_laborales/", {"nombre": "monotributo"})
+# print(response.json())
+
+
+# response = requests.get(BASE + "crm/situaciones_laborales/")
+# print(response.json())
+
+# response = requests.get(BASE + "crm/situaciones_laborales/2")
+# print(response.json())
+
+# response = requests.delete(BASE + "crm/situaciones_laborales/2")
+# print(response.json())
+
+# response = requests.get(BASE + "crm/situaciones_laborales/1")
+# print(response.json())
+
+# response = requests.put(BASE + "crm/situaciones_laborales/1", {"nombre": "asdasd"})
+# print(response.json())
+
+
+#############################################################################################
+
+# Composicion Familiar
+
+# response = requests.delete(BASE + "crm/composiciones_familiares/")
+# print(response.json())
+
+# response = requests.post(BASE + "crm/composiciones_familiares/", {"vinculo": "madre", "nombre": "susana", "apellido": "lopez", "fechaNacimiento": "1980-01-01", "email": "susana@gmail.com", "telFijo": "45321321352", "telMovil": "4567487", "ocupacion": "maestra", "esConviviente": True, "paciente": 5})
+# print(response.json())
+# response = requests.post(BASE + "crm/composiciones_familiares/", {"vinculo": "padre", "nombre": "juan", "apellido": "lopez", "fechaNacimiento": "1980-01-01", "email": "juan@gmail.com", "telFijo": "45321321352", "telMovil": "4567487", "ocupacion": "maestro", "esConviviente": False, "paciente": 5})
+# print(response.json())
+# response = requests.post(BASE + "crm/composiciones_familiares/", {"vinculo": "hermano", "nombre": "jose", "apellido": "lopez", "fechaNacimiento": "1980-01-01", "email": "jose@gmail.com", "telFijo": "45321321352", "telMovil": "4567487", "ocupacion": "maestra", "esConviviente": True, "paciente": 5})
+# print(response.json())
+
+# response = requests.get(BASE + "crm/composiciones_familiares/")
+# print(response.json())
+
+# response = requests.get(BASE + "crm/composiciones_familiares/4")
+# print(response.json())
+
+# response = requests.delete(BASE + "crm/composiciones_familiares/4")
+# print(response.json())
+
+# response = requests.get(BASE + "crm/composiciones_familiares/5")
+# print(response.json())
+
+# response = requests.put(BASE + "crm/composiciones_familiares/5", {"nombre": "asdasd"})
 # print(response.json())
 
 

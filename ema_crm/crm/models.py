@@ -111,3 +111,15 @@ class CoberturaMedicaModel(models.Model):
 #     paciente = models.ForeignKey(PacienteModel, on_delete=models.CASCADE)
 #     taller = models.ForeignKey(TallerModel, on_delete=models.RESTRICT)
 
+class ComposicionFamiliarModel(models.Model):
+    paciente = models.ForeignKey(PacienteModel, on_delete=models.CASCADE)
+    vinculo = models.CharField(max_length=300, blank=False, null=False)
+    nombre = models.CharField(max_length=300, blank=False, null=False)
+    apellido = models.CharField(max_length=300, blank=False, null=False)
+    fechaNacimiento = models.DateField(blank=False, null=False)
+    email = models.EmailField(unique=True, blank=False, null=False)
+    telFijo = models.CharField(max_length=300, blank=True, null=True)
+    telMovil = models.CharField(max_length=300, blank=False, null=False)
+    ocupacion = models.CharField(max_length=300, blank=False, null=False)
+    esConviviente = models.BooleanField(default=False, blank=False, null=False)
+
