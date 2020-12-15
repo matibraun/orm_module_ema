@@ -1,87 +1,90 @@
 from rest_framework.serializers import ModelSerializer
-from crm.models import Paciente, Area, Usuario, Provincia, Domicilio, Derivacion, Tratamiento, Diagnostico, FormaClinica, Sintomas, TerapiasRehabilitacion, Taller, Reunion, SituacionHabitacional, SituacionLaboral, CoberturaMedica, TallerPaciente
+from crm.models import PacienteModel, AreaModel, UsuarioModel, ProvinciaModel, DomicilioModel, TratamientoModel, DiagnosticoModel, FormaClinicaModel, SintomaModel, TerapiaRehabilitacionModel, TallerModel, ReunionModel, SituacionHabitacionalModel, SituacionLaboralModel, CoberturaMedicaModel
+
+# , TallerPacienteModel, DerivacionModel
 
 class PacienteSerializer(ModelSerializer):
     class Meta:
-        model = Paciente
+        model = PacienteModel
         fields = '__all__'
         
 class AreaSerializer(ModelSerializer):
     class Meta:
-        model = Area
+        model = AreaModel
         fields = '__all__'
         
 class UsuarioSerializer(ModelSerializer):
     class Meta:
-        model = Usuario
+        model = UsuarioModel
         fields = '__all__'
         
 class ProvinciaSerializer(ModelSerializer):
     class Meta:
-        model = Provincia
+        model = ProvinciaModel
         fields = '__all__'
         
 class DomicilioSerializer(ModelSerializer):
     class Meta:
-        model = Domicilio
+        model = DomicilioModel
         fields = '__all__'
         
-class PacienteDerivacion(ModelSerializer):
-    class Meta:
-        model = Derivacion
-        fields = '__all__'
+# class DerivacionSerializer(ModelSerializer):
+#     class Meta:
+#         model = DerivacionModel
+#         fields = '__all__'
         
-class PacienteTratamiento(ModelSerializer):
+class TratamientoSerializer(ModelSerializer):
     class Meta:
-        model = Tratamiento
+        model = TratamientoModel
         fields = '__all__'
         
 class DiagnosticoSerializer(ModelSerializer):
     class Meta:
-        model = Diagnostico
+        model = DiagnosticoModel
         fields = '__all__'
         
 class FormaClinicaSerializer(ModelSerializer):
     class Meta:
-        model = FormaClinica
+        model = FormaClinicaModel
         fields = '__all__'
         
-class SintomasSerializer(ModelSerializer):
+class SintomaSerializer(ModelSerializer):
     class Meta:
-        model = Sintomas
+        model = SintomaModel
         fields = '__all__'
         
-class TerapiasRehabilitacionSerializer(ModelSerializer):
+class TerapiaRehabilitacionSerializer(ModelSerializer):
     class Meta:
-        model = TerapiasRehabilitacion
+        model = TerapiaRehabilitacionModel
         fields = '__all__'
         
 class TallerSerializer(ModelSerializer):
     class Meta:
-        model = Taller
+        model = TallerModel
         fields = '__all__'
         
 class ReunionSerializer(ModelSerializer):
     class Meta:
-        model = Reunion
+        model = ReunionModel
         fields = '__all__'
         
 class SituacionHabitacionalSerializer(ModelSerializer):
     class Meta:
-        model = SituacionHabitacional
+        model = SituacionHabitacionalModel
         fields = '__all__'
         
 class SituacionLaboralSerializer(ModelSerializer):
     class Meta:
-        model = SituacionLaboral
+        model = SituacionLaboralModel
         fields = '__all__'
         
 class CoberturaMedicaSerializer(ModelSerializer):
     class Meta:
-        model = CoberturaMedica
+        model = CoberturaMedicaModel
         fields = '__all__'
         
-class TallerPacienteSerializer(ModelSerializer):
-    class Meta:
-        model = TallerPaciente
-        fields = '__all__'
+# class TallerPacienteSerializer(ModelSerializer):
+#     class Meta:
+#         model = TallerPacienteModel
+#         fields = '__all__'
+
