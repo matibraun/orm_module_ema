@@ -16,17 +16,15 @@ class PacientesView(APIView):
 
     def post(self, request):
         serializer = PacienteSerializer(data=request.data)
-        try:
-            if serializer.is_valid():
-                serializer.save()
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
-        except Exception as e:
-            print(e)
-            return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
+        if serializer.is_valid(raise_exception=False):
+            serializer.save()
+            return Response(data=serializer.data, status=status.HTTP_201_CREATED)
+        return Response(data=serializer.errors, status=status.HTTP_406_NOT_ACCEPTABLE)
 
     def delete(self, request):
         PacienteModel.objects.all().delete()
-        return Response(data='All Deleted', status=status.HTTP_410_GONE)
+        return Response(data='All records has been deleted.', status=status.HTTP_410_GONE)
+
 
 class PacienteView(APIView):
 
@@ -39,17 +37,18 @@ class PacienteView(APIView):
     def get(self, request, pk, format=None):
         paciente = self.get_object(pk)
         serializer = PacienteSerializer(paciente)
-        return Response(serializer.data)
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
 
     def put(self, request, pk, format=None):
         paciente = self.get_object(pk)
-        serializer = PacienteSerializer(paciente, data=request.data, partial=True)
-        if serializer.is_valid():
+        serializer = PacienteSerializer(
+            paciente, data=request.data, partial=True)
+        if serializer.is_valid(raise_exception=False):
             serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(data=serializer.data, status=status.HTTP_200_OK)
+        return Response(data=serializer.errors, status=status.HTTP_406_NOT_ACCEPTABLE)
 
     def delete(self, request, pk, format=None):
         paciente = self.get_object(pk)
         paciente.delete()
-        return Response(data='Delete', status=status.HTTP_410_GONE)
+        return Response(data='The record has been deleted.', status=status.HTTP_410_GONE)

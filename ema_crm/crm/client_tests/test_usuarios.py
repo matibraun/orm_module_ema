@@ -8,7 +8,7 @@ BASE = "http://127.0.0.1:8000/"
 # print(response.json())
 
 print('sending request...')
-response = requests.post(BASE + "crm/usuarios/", {"username": "iuyuiooiasd", "password": "12345678", "dni": "4564887", "nombre": "larry", "apellido": "bird",
+response = requests.post(BASE + "crm/usuarios/", {"username": "larrybird", "password": "12345678", "dni": "4564887", "nombre": "larry", "apellido": "bird",
                                                   "fechaNacimiento": "1960-04-04", "email": "larrrry@gmail.com", "telFijo": "321354635", "telMovil": "45787878", "area": 1})
 print('status', response.status_code)
 try:

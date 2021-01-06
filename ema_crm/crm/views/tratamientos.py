@@ -18,12 +18,12 @@ class TratamientosView(APIView):
         serializer = TratamientoSerializer(data=request.data)
         if serializer.is_valid(raise_exception=False):
             serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_406_NOT_ACCEPTABLE)
+            return Response(data=serializer.data, status=status.HTTP_201_CREATED)
+        return Response(data=serializer.errors, status=status.HTTP_406_NOT_ACCEPTABLE)
 
     def delete(self, request):
         TratamientoModel.objects.all().delete()
-        return Response(data='All Deleted', status=status.HTTP_410_GONE)
+        return Response(data='All records has been deleted.', status=status.HTTP_410_GONE)
 
 
 class TratamientoView(APIView):
@@ -37,18 +37,18 @@ class TratamientoView(APIView):
     def get(self, request, pk, format=None):
         tratamiento = self.get_object(pk)
         serializer = TratamientoSerializer(tratamiento)
-        return Response(serializer.data)
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
 
     def put(self, request, pk, format=None):
         tratamiento = self.get_object(pk)
         serializer = TratamientoSerializer(
             tratamiento, data=request.data, partial=True)
-        if serializer.is_valid():
+        if serializer.is_valid(raise_exception=False):
             serializer.save()
-            return Response(data=serializer.data)
-        return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(data=serializer.data, status=status.HTTP_200_OK)
+        return Response(data=serializer.errors, status=status.HTTP_406_NOT_ACCEPTABLE)
 
     def delete(self, request, pk, format=None):
         tratamiento = self.get_object(pk)
         tratamiento.delete()
-        return Response(data='Delete', status=status.HTTP_410_GONE)
+        return Response(data='The record has been deleted.', status=status.HTTP_410_GONE)

@@ -4,18 +4,18 @@ BASE = "http://127.0.0.1:8000/"
 
 # Situacion Habitacional
 
-# response = requests.delete(BASE + "crm/situaciones_habitacionales/")
-# print(response.json())
+response = requests.delete(BASE + "crm/situaciones_habitacionales/")
+print(response.json())
 
-# response = requests.post(BASE + "crm/situaciones_habitacionales/", {"nombre": "solo"})
-# print(response.json())
-# response = requests.post(BASE + "crm/situaciones_habitacionales/", {"nombre": "pareja"})
-# print(response.json())
-# response = requests.post(BASE + "crm/situaciones_habitacionales/", {"nombre": "familia"})
-# print(response.json())
+response = requests.post(BASE + "crm/situaciones_habitacionales/", {"nombre": "solo"})
+print(response.json())
+response = requests.post(BASE + "crm/situaciones_habitacionales/", {"nombre": "pareja"})
+print(response.json())
+response = requests.post(BASE + "crm/situaciones_habitacionales/", {"nombre": "familia"})
+print(response.json())
 
-# response = requests.get(BASE + "crm/situaciones_habitacionales/")
-# print(response.json())
+response = requests.get(BASE + "crm/situaciones_habitacionales/")
+print(response.json())
 
 # response = requests.get(BASE + "crm/situaciones_habitacionales/2")
 # print(response.json())

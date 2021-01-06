@@ -16,7 +16,7 @@ class PacienteModel(models.Model):
     telMovil = models.CharField(max_length=300, blank=False, null=False)
     # domicilios =
     fechaAlta = models.DateField(auto_now=True)
-    usuarioQueRealizoAlta = models.ForeignKey(User, on_delete=models.CASCADE)
+    usuarioQueRealizoAlta = models.ForeignKey(User, on_delete=models.RESTRICT)
     areaALaQueSeDerivo = models.IntegerField(blank=False, null=False)
     esSocio = models.BooleanField(default=False, blank=False, null=False)
     fechaAsociacion = models.DateField(blank=True, null=True)
@@ -85,6 +85,7 @@ class TratamientoModel(models.Model):
     tratamiento = models.CharField(max_length=300, blank=False, null=False)
     droga = models.CharField(max_length=300, blank=False, null=False)
     marca = models.CharField(max_length=300, blank=False, null=False)
+    usuarioQueCargoTratamiento = models.ForeignKey(User, on_delete=models.RESTRICT)
 
 
 class DiagnosticoModel(models.Model):
@@ -109,8 +110,8 @@ class TallerModel(models.Model):
 
 
 class ReunionModel(models.Model):
-    paciente = models.OneToOneField(PacienteModel, on_delete=models.CASCADE)
-    usuario = models.OneToOneField(User, on_delete=models.CASCADE)
+    paciente = models.ForeignKey(PacienteModel, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(User, on_delete=models.RESTRICT)
     fecha = models.DateField(auto_now=True)
     contenido = models.TextField(blank=False, null=False)
     areaAlQueSeDerivo = models.ForeignKey(
@@ -139,7 +140,7 @@ class ComposicionFamiliarModel(models.Model):
     nombre = models.CharField(max_length=300, blank=False, null=False)
     apellido = models.CharField(max_length=300, blank=False, null=False)
     fechaNacimiento = models.DateField(blank=False, null=False)
-    email = models.EmailField(unique=True, blank=False, null=False)
+    email = models.EmailField(unique=False, blank=False, null=False)
     telFijo = models.CharField(max_length=300, blank=True, null=True)
     telMovil = models.CharField(max_length=300, blank=False, null=False)
     ocupacion = models.CharField(max_length=300, blank=False, null=False)
