@@ -15,7 +15,7 @@ class TalleresView(APIView):
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request):
-        serializer = TallerSerializer(data=request.data)
+        serializer = TallerSerializer(data=request.data, many=True)
         if serializer.is_valid(raise_exception=False):
             serializer.save()
             return Response(data=serializer.data, status=status.HTTP_201_CREATED)

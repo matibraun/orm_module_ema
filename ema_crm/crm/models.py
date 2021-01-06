@@ -106,7 +106,7 @@ class TerapiaRehabilitacionModel(models.Model):
 
 class TallerModel(models.Model):
     nombre = models.CharField(max_length=300, blank=False, null=False)
-#    pacientes = models.ManyToManyField(PacienteModel)
+    pacientes = models.ManyToManyField(PacienteModel)
 
 
 class ReunionModel(models.Model):
