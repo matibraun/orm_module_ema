@@ -3,38 +3,42 @@ from rest_framework.response import Response
 from django.core.exceptions import ObjectDoesNotExist
 from rest_framework import status
 from rest_framework.views import APIView
-from crm.models import UsuarioModel
-from crm.serializers import UsuarioSerializer
+from crm.models import UsuarioExtendidoModel
+from crm.serializers import UsuarioSerializer, UserSerializer
+from django.contrib.auth.models import User
 
 
 # Create your views here.
 
 class UsuariosView(APIView):
     def get(self, request):
-        queryset = UsuarioModel.objects.all()
+        queryset = UsuarioExtendidoModel.objects.all()
         serializer = UsuarioSerializer(queryset, many=True)
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request):
-        serializer = UsuarioSerializer(data=request.data)
-        try:
-            if serializer.is_valid():
-                serializer.save()
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
-        except Exception as e:
-            print(e)
-            return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
+        serializer_user = UserSerializer(data=request.data)
+        # TODO: SUPER IMPORTANTE, TRANSACCION!!!
+        if serializer_user.is_valid(raise_exception=False):
+            user = serializer_user.save()
+            serializer_usuario = UsuarioSerializer(data=request.data)
+            if serializer_usuario.is_valid(raise_exception=False):
+                serializer_usuario.save(user=user)
+                return Response({**serializer_usuario.data, **serializer_user.data}, status=status.HTTP_201_CREATED)
+            return Response(serializer_usuario.errors, status=status.HTTP_406_NOT_ACCEPTABLE)
+        return Response(serializer_user.errors, status=status.HTTP_406_NOT_ACCEPTABLE)
 
     def delete(self, request):
-        UsuarioModel.objects.all().delete()
+        UsuarioExtendidoModel.objects.all().delete()
         return Response(data='All Deleted', status=status.HTTP_410_GONE)
+
 
 class UsuarioView(APIView):
 
     def get_object(self, pk):
         try:
-            return UsuarioModel.objects.get(pk=pk)
-        except UsuarioModel.DoesNotExist:
+            return UsuarioExtendidoModel.objects.get(pk=pk)
+        except UsuarioExtendidoModel.DoesNotExist:
             raise ValueError
 
     def get(self, request, pk, format=None):
@@ -44,7 +48,8 @@ class UsuarioView(APIView):
 
     def put(self, request, pk, format=None):
         usuario = self.get_object(pk)
-        serializer = UsuarioSerializer(usuario, data=request.data, partial=True)
+        serializer = UsuarioSerializer(
+            usuario, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)

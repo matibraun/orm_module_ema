@@ -203,13 +203,20 @@ BASE = "http://127.0.0.1:8000/"
 
 #############################################################################################
 
-# Usuarios OK
+# Usuarios
 
 # response = requests.delete(BASE + "crm/usuarios/")
 # print(response.json())
 
-# response = requests.post(BASE + "crm/usuarios/", {"dni": "4564887", "nombre": "larry", "apellido": "bird", "fechaNacimiento": "1960-04-04", "email": "larrrry@gmail.com", "telFijo": "321354635", "telMovil": "45787878", "area": 12})
-# print(response.json())
+print('sending request...')
+response = requests.post(BASE + "crm/usuarios/", {"username": "pippopoyxccxto", "password": "12345678", "dni": "4564887", "nombre": "larry", "apellido": "bird",
+                                                  "fechaNacimiento": "1960-04-04", "email": "larrrry@gmail.com", "telFijo": "321354635", "telMovil": "45787878", "area": 1})
+print('status', response.status_code)
+try:
+    print(response.json())
+except:
+    pass
+
 # response = requests.post(BASE + "crm/usuarios/", {"dni":"354321321", "nombre":"mugsy", "apellido":"boggs", "fechaNacimiento":"1960-04-04", "email":"mugsy@gmail.com","telFijo":"321354635", "telMovil":"45787878", "area": 13})
 # print(response.json())
 # response = requests.post(BASE + "crm/usuarios/", {"dni":"4565786", "nombre":"jason", "apellido":"kidd", "fechaNacimiento":"1960-04-04", "email":"jason@gmail.com","telFijo":"321354635", "telMovil":"45787878", "area": 14})
@@ -374,8 +381,6 @@ BASE = "http://127.0.0.1:8000/"
 # response = requests.post(BASE + "crm/formas_clinicas/", {"nombre": "sindrome desmielinizante"})
 # print(response.json())
 
-
-
 # response = requests.get(BASE + "crm/formas_clinicas/")
 # print(response.json())
 
@@ -408,7 +413,6 @@ BASE = "http://127.0.0.1:8000/"
 # print(response.json())
 # response = requests.post(BASE + "crm/sintomas/", {"nombre": "otros"})
 # print(response.json())
-
 
 
 # response = requests.get(BASE + "crm/sintomas/")

@@ -6,7 +6,6 @@ from rest_framework.views import APIView
 from crm.models import TratamientoModel
 from crm.serializers import TratamientoSerializer
 
-
 # Create your views here.
 
 class TratamientosView(APIView):
@@ -17,17 +16,15 @@ class TratamientosView(APIView):
 
     def post(self, request):
         serializer = TratamientoSerializer(data=request.data)
-        try:
-            if serializer.is_valid():
-                serializer.save()
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
-        except Exception as e:
-            print(e)
-            return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
+        if serializer.is_valid(raise_exception=False):
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_406_NOT_ACCEPTABLE)
 
     def delete(self, request):
         TratamientoModel.objects.all().delete()
         return Response(data='All Deleted', status=status.HTTP_410_GONE)
+
 
 class TratamientoView(APIView):
 
@@ -44,11 +41,12 @@ class TratamientoView(APIView):
 
     def put(self, request, pk, format=None):
         tratamiento = self.get_object(pk)
-        serializer = TratamientoSerializer(tratamiento, data=request.data, partial=True)
+        serializer = TratamientoSerializer(
+            tratamiento, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(data=serializer.data)
+        return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
         tratamiento = self.get_object(pk)

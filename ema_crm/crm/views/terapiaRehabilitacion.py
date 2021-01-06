@@ -16,14 +16,11 @@ class TerapiasRehabilitacionesView(APIView):
 
     def post(self, request):
         serializer = TerapiaRehabilitacionSerializer(data=request.data)
-        try:
-            if serializer.is_valid():
-                serializer.save()
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
-        except Exception as e:
-            print(e)
-            return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
-
+        if serializer.is_valid(raise_exception=False):
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_406_NOT_ACCEPTABLE)
+        
     def delete(self, request):
         TerapiaRehabilitacionModel.objects.all().delete()
         return Response(data='All Deleted', status=status.HTTP_410_GONE)
