@@ -8,6 +8,7 @@ from crm.serializers import DiagnosticoSerializer
 
 # Create your views here.
 
+
 class DiagnosticosView(APIView):
     def get(self, request):
         queryset = DiagnosticoModel.objects.all()
@@ -23,7 +24,7 @@ class DiagnosticosView(APIView):
 
     def delete(self, request):
         DiagnosticoModel.objects.all().delete()
-        return Response(data='All records has been deleted.', status=status.HTTP_410_GONE)
+        return Response(data='All records have been deleted.', status=status.HTTP_410_GONE)
 
 
 class DiagnosticoView(APIView):

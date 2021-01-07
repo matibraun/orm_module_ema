@@ -8,6 +8,7 @@ from crm.serializers import ReunionSerializer
 
 # Create your views here.
 
+
 class ReunionesView(APIView):
     def get(self, request):
         queryset = ReunionModel.objects.all()
@@ -23,7 +24,7 @@ class ReunionesView(APIView):
 
     def delete(self, request):
         ReunionModel.objects.all().delete()
-        return Response(data='All records has been deleted.', status=status.HTTP_410_GONE)
+        return Response(data='All records have been deleted.', status=status.HTTP_410_GONE)
 
 
 class ReunionView(APIView):

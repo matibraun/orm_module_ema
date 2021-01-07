@@ -8,6 +8,7 @@ from crm.serializers import AreaSerializer
 
 # Create your views here.
 
+
 class AreasView(APIView):
     def get(self, request):
         queryset = AreaModel.objects.all()
@@ -23,7 +24,7 @@ class AreasView(APIView):
 
     def delete(self, request):
         AreaModel.objects.all().delete()
-        return Response(data='All records has been deleted.', status=status.HTTP_410_GONE)
+        return Response(data='All records have been deleted.', status=status.HTTP_410_GONE)
 
 
 class AreaView(APIView):

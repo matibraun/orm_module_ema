@@ -8,6 +8,7 @@ from crm.serializers import ComposicionFamiliarSerializer
 
 # Create your views here.
 
+
 class ComposicionesFamiliaresView(APIView):
     def get(self, request):
         queryset = ComposicionFamiliarModel.objects.all()
@@ -23,7 +24,7 @@ class ComposicionesFamiliaresView(APIView):
 
     def delete(self, request):
         ComposicionFamiliarModel.objects.all().delete()
-        return Response(data='All records has been deleted.', status=status.HTTP_410_GONE)
+        return Response(data='All records have been deleted.', status=status.HTTP_410_GONE)
 
 
 class ComposicionFamiliarView(APIView):

@@ -8,6 +8,7 @@ from crm.serializers import SituacionLaboralSerializer
 
 # Create your views here.
 
+
 class SituacionesLaboralesView(APIView):
     def get(self, request):
         queryset = SituacionLaboralModel.objects.all()
@@ -23,7 +24,7 @@ class SituacionesLaboralesView(APIView):
 
     def delete(self, request):
         SituacionLaboralModel.objects.all().delete()
-        return Response(data='All records has been deleted.', status=status.HTTP_410_GONE)
+        return Response(data='All records have been deleted.', status=status.HTTP_410_GONE)
 
 
 class SituacionLaboralView(APIView):

@@ -38,12 +38,7 @@ class PacienteModel(models.Model):
         max_length=300, blank=True, null=True)
     tieneCUD = models.BooleanField(default=False, blank=False, null=False)
     fechaVencimientoCUD = models.DateField(blank=True, null=True)
-    # derivaciones =
-    # talleres =
-    # tratamientos =
-    # diagnosticos =
-    # formasClinicas =
-    # sintomas =
+    talleres = models.ManyToManyField('TallerModel', through='TallerPacienteModel')
 
 
 class AreaModel(models.Model):
@@ -106,7 +101,7 @@ class TerapiaRehabilitacionModel(models.Model):
 
 class TallerModel(models.Model):
     nombre = models.CharField(max_length=300, blank=False, null=False)
-    pacientes = models.ManyToManyField(PacienteModel)
+    pacientes = models.ManyToManyField('PacienteModel', through='TallerPacienteModel')
 
 
 class ReunionModel(models.Model):
@@ -129,9 +124,10 @@ class SituacionLaboralModel(models.Model):
 class CoberturaMedicaModel(models.Model):
     nombre = models.CharField(max_length=300, blank=False, null=False)
 
-# class TallerPacienteModel(models.Model):
-#     paciente = models.ForeignKey(PacienteModel, on_delete=models.CASCADE)
-#     taller = models.ForeignKey(TallerModel, on_delete=models.RESTRICT)
+
+class TallerPacienteModel(models.Model):
+    paciente = models.ForeignKey(PacienteModel, on_delete=models.CASCADE)
+    taller = models.ForeignKey(TallerModel, on_delete=models.CASCADE)
 
 
 class ComposicionFamiliarModel(models.Model):

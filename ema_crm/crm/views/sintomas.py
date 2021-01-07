@@ -8,6 +8,7 @@ from crm.serializers import SintomaSerializer
 
 # Create your views here.
 
+
 class SintomasView(APIView):
     def get(self, request):
         queryset = SintomaModel.objects.all()
@@ -23,7 +24,7 @@ class SintomasView(APIView):
 
     def delete(self, request):
         SintomaModel.objects.all().delete()
-        return Response(data='All records has been deleted.', status=status.HTTP_410_GONE)
+        return Response(data='All records have been deleted.', status=status.HTTP_410_GONE)
 
 
 class SintomaView(APIView):

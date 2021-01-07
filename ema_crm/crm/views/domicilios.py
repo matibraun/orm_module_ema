@@ -8,6 +8,7 @@ from crm.serializers import DomicilioSerializer
 
 # Create your views here.
 
+
 class DomiciliosView(APIView):
     def get(self, request):
         queryset = DomicilioModel.objects.all()
@@ -23,7 +24,7 @@ class DomiciliosView(APIView):
 
     def delete(self, request):
         DomicilioModel.objects.all().delete()
-        return Response(data='All records has been deleted.', status=status.HTTP_410_GONE)
+        return Response(data='All records have been deleted.', status=status.HTTP_410_GONE)
 
 
 class DomicilioView(APIView):

@@ -8,6 +8,7 @@ from crm.serializers import TallerSerializer
 
 # Create your views here.
 
+
 class TalleresView(APIView):
     def get(self, request):
         queryset = TallerModel.objects.all()
@@ -15,7 +16,7 @@ class TalleresView(APIView):
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request):
-        serializer = TallerSerializer(data=request.data, many=True)
+        serializer = TallerSerializer(data=request.data)
         if serializer.is_valid(raise_exception=False):
             serializer.save()
             return Response(data=serializer.data, status=status.HTTP_201_CREATED)
@@ -23,7 +24,7 @@ class TalleresView(APIView):
 
     def delete(self, request):
         TallerModel.objects.all().delete()
-        return Response(data='All records has been deleted.', status=status.HTTP_410_GONE)
+        return Response(data='All records have been deleted.', status=status.HTTP_410_GONE)
 
 
 class TallerView(APIView):

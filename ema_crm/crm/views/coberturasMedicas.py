@@ -8,6 +8,7 @@ from crm.serializers import CoberturaMedicaSerializer
 
 # Create your views here.
 
+
 class CoberturasMedicasView(APIView):
     def get(self, request):
         queryset = CoberturaMedicaModel.objects.all()
@@ -23,7 +24,7 @@ class CoberturasMedicasView(APIView):
 
     def delete(self, request):
         CoberturaMedicaModel.objects.all().delete()
-        return Response(data='All records has been deleted.', status=status.HTTP_410_GONE)
+        return Response(data='All records have been deleted.', status=status.HTTP_410_GONE)
 
 
 class CoberturaMedicaView(APIView):

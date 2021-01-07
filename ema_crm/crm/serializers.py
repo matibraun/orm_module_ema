@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from crm.models import PacienteModel, AreaModel, UsuarioExtendidoModel, ProvinciaModel, DomicilioModel, TratamientoModel, DiagnosticoModel, FormaClinicaModel, SintomaModel, TerapiaRehabilitacionModel, TallerModel, ReunionModel, SituacionHabitacionalModel, SituacionLaboralModel, CoberturaMedicaModel, ComposicionFamiliarModel
+from crm.models import PacienteModel, AreaModel, UsuarioExtendidoModel, ProvinciaModel, DomicilioModel, TratamientoModel, DiagnosticoModel, FormaClinicaModel, SintomaModel, TerapiaRehabilitacionModel, TallerModel, ReunionModel, SituacionHabitacionalModel, SituacionLaboralModel, CoberturaMedicaModel, ComposicionFamiliarModel, TallerPacienteModel
 from django.contrib.auth.models import User
 
 # , TallerPacienteModel, DerivacionModel
@@ -105,10 +105,10 @@ class CoberturaMedicaSerializer(ModelSerializer):
         model = CoberturaMedicaModel
         fields = '__all__'
 
-# class TallerPacienteSerializer(ModelSerializer):
-#     class Meta:
-#         model = TallerPacienteModel
-#         fields = '__all__'
+class TallerPacienteSerializer(ModelSerializer):
+    class Meta:
+        model = TallerPacienteModel
+        fields = '__all__'
 
 
 class ComposicionFamiliarSerializer(ModelSerializer):

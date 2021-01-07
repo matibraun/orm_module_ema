@@ -8,6 +8,7 @@ from crm.serializers import SituacionHabitacionalSerializer
 
 # Create your views here.
 
+
 class SituacionesHabitacionalesView(APIView):
     def get(self, request):
         queryset = SituacionHabitacionalModel.objects.all()
@@ -23,7 +24,7 @@ class SituacionesHabitacionalesView(APIView):
 
     def delete(self, request):
         SituacionHabitacionalModel.objects.all().delete()
-        return Response(data='All records has been deleted.', status=status.HTTP_410_GONE)
+        return Response(data='All records have been deleted.', status=status.HTTP_410_GONE)
 
 
 class SituacionHabitacionalView(APIView):

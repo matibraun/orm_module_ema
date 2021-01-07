@@ -8,6 +8,7 @@ from crm.serializers import ProvinciaSerializer
 
 # Create your views here.
 
+
 class ProvinciasView(APIView):
     def get(self, request):
         queryset = ProvinciaModel.objects.all()
@@ -23,7 +24,7 @@ class ProvinciasView(APIView):
 
     def delete(self, request):
         ProvinciaModel.objects.all().delete()
-        return Response(data='All records has been deleted.', status=status.HTTP_410_GONE)
+        return Response(data='All records have been deleted.', status=status.HTTP_410_GONE)
 
 
 class ProvinciaView(APIView):

@@ -32,7 +32,7 @@ from .views.situacionesHabitacionales import SituacionesHabitacionalesView, Situ
 from .views.situacionesLaborales import SituacionesLaboralesView, SituacionLaboralView
 from .views.coberturasMedicas import CoberturasMedicasView, CoberturaMedicaView
 from .views.composicionesFamiliares import ComposicionesFamiliaresView, ComposicionFamiliarView
-
+from .views.talleresPacientes import TalleresPacientesView, TallerPacienteView
 
 
 
@@ -72,4 +72,6 @@ urlpatterns = [
     path('coberturas_medicas/<int:pk>', CoberturaMedicaView.as_view(), name='cobertura_medica'),
     path('composiciones_familiares/', ComposicionesFamiliaresView.as_view(), name='composiciones_familiares'),
     path('composiciones_familiares/<int:pk>', ComposicionFamiliarView.as_view(), name='composicion_familiar'),
+    path('talleres_pacientes/', TalleresPacientesView.as_view(), name='talleres_pacientes'),
+    path('talleres_pacientes/<int:pk>', TallerPacienteView.as_view(), name='taller_paciente'),
     ]

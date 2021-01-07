@@ -8,6 +8,7 @@ from crm.serializers import TratamientoSerializer
 
 # Create your views here.
 
+
 class TratamientosView(APIView):
     def get(self, request):
         queryset = TratamientoModel.objects.all()
@@ -23,7 +24,7 @@ class TratamientosView(APIView):
 
     def delete(self, request):
         TratamientoModel.objects.all().delete()
-        return Response(data='All records has been deleted.', status=status.HTTP_410_GONE)
+        return Response(data='All records have been deleted.', status=status.HTTP_410_GONE)
 
 
 class TratamientoView(APIView):

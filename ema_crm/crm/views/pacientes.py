@@ -8,6 +8,7 @@ from crm.serializers import PacienteSerializer
 
 # Create your views here.
 
+
 class PacientesView(APIView):
     def get(self, request):
         queryset = PacienteModel.objects.all()
@@ -23,7 +24,7 @@ class PacientesView(APIView):
 
     def delete(self, request):
         PacienteModel.objects.all().delete()
-        return Response(data='All records has been deleted.', status=status.HTTP_410_GONE)
+        return Response(data='All records have been deleted.', status=status.HTTP_410_GONE)
 
 
 class PacienteView(APIView):
