@@ -1,8 +1,6 @@
 from rest_framework.serializers import ModelSerializer
-from crm.models import PacienteModel, AreaModel, UsuarioExtendidoModel, ProvinciaModel, DomicilioModel, TratamientoModel, DiagnosticoModel, FormaClinicaModel, SintomaModel, TerapiaRehabilitacionModel, TallerModel, ReunionModel, SituacionHabitacionalModel, SituacionLaboralModel, CoberturaMedicaModel, ComposicionFamiliarModel, TallerPacienteModel
+from crm.models import PacienteModel, AreaModel, UserExtendidoModel, ProvinciaModel, DomicilioPacienteModel, TratamientoModel, DiagnosticoModel, FormaClinicaModel, SintomaModel, TerapiaRehabilitacionModel, TallerModel, ReunionModel, SituacionHabitacionalModel, SituacionLaboralModel, CoberturaMedicaModel, ComposicionFamiliarModel, TallerPacienteModel, EstadoCivilModel, GeneroModel, DomicilioAlternativoPacienteModel, CuotaPagaModel
 from django.contrib.auth.models import User
-
-# , TallerPacienteModel, DerivacionModel
 
 
 class PacienteSerializer(ModelSerializer):
@@ -19,7 +17,7 @@ class AreaSerializer(ModelSerializer):
 
 class UsuarioSerializer(ModelSerializer):
     class Meta:
-        model = UsuarioExtendidoModel
+        model = UserExtendidoModel
         exclude = ('user',)
 
 
@@ -35,10 +33,29 @@ class ProvinciaSerializer(ModelSerializer):
         fields = '__all__'
 
 
+class EstadoCivilSerializer(ModelSerializer):
+    class Meta:
+        model = EstadoCivilModel
+        fields = '__all__'
+
+
+class GeneroSerializer(ModelSerializer):
+    class Meta:
+        model = GeneroModel
+        fields = '__all__'
+
+
 class DomicilioSerializer(ModelSerializer):
     class Meta:
-        model = DomicilioModel
+        model = DomicilioPacienteModel
         fields = '__all__'
+
+
+class DomicilioAlternativoSerializer(ModelSerializer):
+    class Meta:
+        model = DomicilioAlternativoPacienteModel
+        fields = '__all__'
+
 
 # class DerivacionSerializer(ModelSerializer):
 #     class Meta:
@@ -105,6 +122,7 @@ class CoberturaMedicaSerializer(ModelSerializer):
         model = CoberturaMedicaModel
         fields = '__all__'
 
+
 class TallerPacienteSerializer(ModelSerializer):
     class Meta:
         model = TallerPacienteModel
@@ -114,4 +132,10 @@ class TallerPacienteSerializer(ModelSerializer):
 class ComposicionFamiliarSerializer(ModelSerializer):
     class Meta:
         model = ComposicionFamiliarModel
+        fields = '__all__'
+
+
+class CuotaPagaSerializer(ModelSerializer):
+    class Meta:
+        model = CuotaPagaModel
         fields = '__all__'

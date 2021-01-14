@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from django.core.exceptions import ObjectDoesNotExist
 from rest_framework import status
 from rest_framework.views import APIView
-from crm.models import UsuarioExtendidoModel
+from crm.models import UserExtendidoModel
 from crm.serializers import UsuarioSerializer, UserSerializer
 from django.contrib.auth.models import User
 
@@ -12,7 +12,7 @@ from django.contrib.auth.models import User
 
 class UsuariosView(APIView):
     def get(self, request):
-        queryset = UsuarioExtendidoModel.objects.all()
+        queryset = UserExtendidoModel.objects.all()
         serializer = UsuarioSerializer(queryset, many=True)
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
@@ -29,7 +29,7 @@ class UsuariosView(APIView):
         return Response(serializer_user.errors, status=status.HTTP_406_NOT_ACCEPTABLE)
 
     def delete(self, request):
-        UsuarioExtendidoModel.objects.all().delete()
+        UserExtendidoModel.objects.all().delete()
         return Response(data='All Deleted', status=status.HTTP_410_GONE)
 
 
@@ -37,8 +37,8 @@ class UsuarioView(APIView):
 
     def get_object(self, pk):
         try:
-            return UsuarioExtendidoModel.objects.get(pk=pk)
-        except UsuarioExtendidoModel.DoesNotExist:
+            return UserExtendidoModel.objects.get(pk=pk)
+        except UserExtendidoModel.DoesNotExist:
             raise ValueError
 
     def get(self, request, pk, format=None):

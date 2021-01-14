@@ -28,7 +28,7 @@ class Migration(migrations.Migration):
         ),
         migrations.RenameModel(
             old_name='Domicilio',
-            new_name='DomicilioModel',
+            new_name='DomicilioPacienteModel',
         ),
         migrations.RenameModel(
             old_name='FormaClinica',
