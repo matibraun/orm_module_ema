@@ -44,12 +44,6 @@ class FormaClinicaModel(models.Model):
     nombre = models.CharField(max_length=300, blank=False, null=False)
 
 
-class SintomaModel(models.Model):
-    nombre = models.CharField(max_length=300, blank=False, null=False)
-
-
-class TerapiaRehabilitacionModel(models.Model):
-    nombre = models.CharField(max_length=300, blank=False, null=False)
 
 
 class UserExtendidoModel(models.Model):
@@ -62,7 +56,7 @@ class UserExtendidoModel(models.Model):
 
 
 class DomicilioUserModel(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     calle = models.CharField(max_length=300, blank=False, null=False)
     numero = models.CharField(max_length=300, blank=False, null=False)
     piso = models.CharField(max_length=300, blank=True, null=True)
@@ -72,6 +66,7 @@ class DomicilioUserModel(models.Model):
 
 
 class PacienteModel(models.Model):
+    # Falta el diagnostico, forma clinica, rehabilitacion y sintomas!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     dni = models.CharField(max_length=300, unique=True,
                            blank=False, null=False)
     nombre = models.CharField(max_length=300, blank=False, null=False)
@@ -90,19 +85,26 @@ class PacienteModel(models.Model):
     usuarioQueRealizoAlta = models.ForeignKey(User, on_delete=models.RESTRICT)
     esSocio = models.BooleanField(default=False, blank=False, null=False)
     fechaAsociacion = models.DateField(blank=True, null=True)
-    fechaUltimaCuotaPaga = models.DateField(blank=True, null=True)
     recibeMailing = models.BooleanField(default=False, blank=False, null=False)
     coberturaMedica = models.ForeignKey(
         CoberturaMedicaModel, on_delete=models.RESTRICT)
     numeroAfiliado = models.CharField(max_length=300, blank=False, null=True)
-    lugarDeAtencion = models.CharField(max_length=300, blank=False, null=False)
-    neurologoCabecera = models.CharField(
+    centroDeAtencion = models.CharField(max_length=300, blank=False, null=False)
+    medicoTratante = models.CharField(
         max_length=300, blank=False, null=False)
+    diagnostico = models.ForeignKey(
+        DiagnosticoModel, on_delete=models.RESTRICT)
+    formaClinica = models.ForeignKey(
+        FormaClinicaModel, on_delete=models.RESTRICT)
+    sintomas = models.ManyToManyField(
+        'SintomaModel', through='SintomaPacienteModel')
+    terapiasRehabilitacion = models.ManyToManyField(
+        'TerapiaRehabilitacionModel', through='TerapiaRehabilitacionPacienteModel')
+    fechaDiagnostico = models.DateField(blank=False, null=False)
     situacionHabitacional = models.ForeignKey(
         SituacionHabitacionalModel, on_delete=models.RESTRICT)
     situacionLaboral = models.ForeignKey(
         SituacionLaboralModel, on_delete=models.RESTRICT)
-    fechaDiagnostico = models.DateField(blank=False, null=False)
     actividadFisica = models.BooleanField(
         default=False, blank=False, null=False)
     fumadorTabaco = models.BooleanField(default=False, blank=False, null=False)
@@ -119,7 +121,7 @@ class PacienteModel(models.Model):
 
 
 class DomicilioPacienteModel(models.Model):
-    paciente = models.ForeignKey(PacienteModel, on_delete=models.CASCADE)
+    paciente = models.OneToOneField(PacienteModel, on_delete=models.CASCADE)
     calle = models.CharField(max_length=300, blank=False, null=False)
     numero = models.CharField(max_length=300, blank=False, null=False)
     piso = models.CharField(max_length=300, blank=True, null=True)
@@ -129,7 +131,7 @@ class DomicilioPacienteModel(models.Model):
 
 
 class DomicilioAlternativoPacienteModel(models.Model):
-    paciente = models.ForeignKey(PacienteModel, on_delete=models.CASCADE)
+    paciente = models.OneToOneField(PacienteModel, on_delete=models.CASCADE)
     calle = models.CharField(max_length=300, blank=False, null=False)
     numero = models.CharField(max_length=300, blank=False, null=False)
     piso = models.CharField(max_length=300, blank=True, null=True)
@@ -163,7 +165,6 @@ class CuotaPagaModel(models.Model):
 class TratamientoModel(models.Model):
     paciente = models.ForeignKey(PacienteModel, on_delete=models.CASCADE)
     fecha = models.DateField(auto_now=True)
-    medicoTratante = models.CharField(max_length=300, blank=False, null=False)
     tratamiento = models.CharField(max_length=300, blank=False, null=False)
     droga = models.CharField(max_length=300, blank=False, null=False)
     marca = models.CharField(max_length=300, blank=False, null=False)
@@ -192,6 +193,26 @@ class GrupoDeApoyoPacienteModel(models.Model):
     paciente = models.ForeignKey(PacienteModel, on_delete=models.CASCADE)
     grupoDeApoyo = models.ForeignKey(
         GrupoDeApoyoModel, on_delete=models.CASCADE)
+
+
+class SintomaModel(models.Model):
+    nombre = models.CharField(max_length=300, blank=False, null=False)
+    pacientes = models.ManyToManyField(
+    'PacienteModel', through='SintomaPacienteModel')
+
+class SintomaPacienteModel(models.Model):
+    paciente = models.ForeignKey(PacienteModel, on_delete=models.CASCADE)
+    sintoma = models.ForeignKey(SintomaModel, on_delete=models.CASCADE)
+
+
+class TerapiaRehabilitacionModel(models.Model):
+    nombre = models.CharField(max_length=300, blank=False, null=False)
+    pacientes = models.ManyToManyField(
+    'PacienteModel', through='TerapiaRehabilitacionPacienteModel')
+
+class TerapiaRehabilitacionPacienteModel(models.Model):
+    paciente = models.ForeignKey(PacienteModel, on_delete=models.CASCADE)
+    terapiaRehabilitacion = models.ForeignKey(TerapiaRehabilitacionModel, on_delete=models.CASCADE)
 
 
 class ReunionModel(models.Model):
